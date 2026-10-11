@@ -1,0 +1,235 @@
+/* ==========================================================
+   Blackjack Hub - shared stylesheet (CSC 4370 Project 1)
+   Every page links to this ONE file. Change a value in :root
+   and the whole site updates.
+   ========================================================== */
+
+/* 1. DESIGN TOKENS: the "paint cans" every page pulls from */
+:root {
+  /* Colors: felt-green table, ivory playing-card paper, one red, one brass */
+  --felt-deep:  #082A20;   /* page background */
+  --felt:       #0E3B2E;   /* table surface */
+  --felt-light: #16503F;   /* glow behind content */
+  --ivory:      #F7F3EA;   /* cards + main text on felt */
+  --ink:        #15191C;   /* text on ivory */
+  --suit-red:   #B8322F;   /* hearts/diamonds, small accents */
+  --brass:      #C9A24B;   /* buttons + focus ring, used sparingly */
+  --muted:      #B9C9C1;   /* secondary text on felt */
+
+  /* Type: system fonts only, so nothing external can fail to load */
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Spacing + shape */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 3rem;
+  --space-5: 5rem;
+  --radius: 14px;
+  --max-width: 68rem;
+}
+
+/* 2. BASE: sensible defaults for the whole site */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--ivory);
+  background: radial-gradient(ellipse at 50% 0%, var(--felt-light), var(--felt-deep) 65%);
+  background-color: var(--felt-deep);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  margin: 0 0 var(--space-2);
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); }
+h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { margin: 0 0 var(--space-2); max-width: 65ch; }
+
+a { color: var(--brass); }
+img { max-width: 100%; height: auto; }
+
+/* Keyboard users can always see where they are */
+:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 3. LAYOUT HELPERS */
+.container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+}
+main { flex: 1; }
+.section { padding-block: var(--space-4); }
+
+/* Grid that adds/removes columns by itself as the screen changes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-3);
+}
+
+/* 4. NAVIGATION: same on every page */
+.site-header {
+  border-bottom: 1px solid rgba(247, 243, 234, 0.18);
+}
+.site-header .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+}
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--ivory);
+  text-decoration: none;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-list a {
+  color: var(--muted);
+  text-decoration: none;
+  padding-block: 0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.nav-list a:hover,
+.nav-list a:focus-visible,
+.nav-list a[aria-current="page"] {
+  color: var(--ivory);
+  border-bottom-color: var(--brass);
+}
+
+/* 5. BUTTONS */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.6rem;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--brass);
+  border: 2px solid var(--brass);
+  border-radius: 999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  background: #D8B45C;
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn--ghost:hover,
+.btn--ghost:focus-visible { background: var(--ink); color: var(--ivory); }
+
+/* 6. CARDS: ivory like real playing-card paper */
+.card {
+  background: var(--ivory);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover,
+.card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4);
+}
+.card .btn { margin-top: auto; }
+
+/* A drawn playing card (pure CSS, no images) */
+.play-card {
+  position: relative;
+  width: 7.5rem;
+  aspect-ratio: 5 / 7;
+  background: var(--ivory);
+  color: var(--ink);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45);
+  font-family: var(--font-display);
+}
+.play-card .rank { position: absolute; top: 0.5rem; left: 0.65rem; font-size: 1.5rem; font-weight: bold; }
+.play-card .suit { position: absolute; inset: 0; display: grid; place-items: center; font-size: 3rem; }
+.play-card--red { color: var(--suit-red); }
+
+/* 7. HOME PAGE HERO */
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+}
+.hero p { color: var(--muted); font-size: 1.15rem; }
+
+/* One two-card hand (Ace + King = blackjack) */
+.hand {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-3);
+}
+.hand .play-card:first-child { transform: rotate(-9deg) translateX(1rem); }
+.hand .play-card:last-child  { transform: rotate(9deg) translateX(-1rem); }
+
+/* The ONE entrance animation on the site: the hero deals in on page load */
+@keyframes deal-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero .container { animation: deal-in 0.8s ease-out both; }
+
+/* 8. FOOTER */
+.site-footer {
+  border-top: 1px solid rgba(247, 243, 234, 0.18);
+  padding-block: var(--space-3);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* 9. RESPONSIVE: phones */
+@media (max-width: 40rem) {
+  .hero .container { grid-template-columns: 1fr; padding-block: var(--space-4); }
+  .hand { order: -1; }
+  .play-card { width: 6rem; }
+}
+
+/* 10. ACCESSIBILITY: respect "reduce motion" settings */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
