@@ -240,19 +240,12 @@ main { flex: 1; }
 }
 .hero p { color: var(--muted); font-size: 1.15rem; }
 
-/* The table artwork: curved table print, a hand of cards, and chips */
+/* The table artwork: a hand of cards and chips */
 .table-art {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-@keyframes float {
-    0%, 100% {transform: translateY(0);}
-    50% {transform: translateY(-14px);}
-}
-
-
 .hand {
   display: flex;
   justify-content: center;
@@ -270,6 +263,12 @@ main { flex: 1; }
   animation: float 5s ease-in-out 0.6s infinite;
 }
 .chips .chip + .chip { margin-left: -1.6rem; }
+
+/* Gentle floating motion: down, up, back down */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
 
 /* The ONE entrance animation on the site: the hero deals in on page load */
 @keyframes deal-in {
@@ -293,6 +292,138 @@ main { flex: 1; }
   .table-art { order: -1; }
   .play-card { width: 6.5rem; }
   .chip { width: 3.6rem; }
+}
+
+/* ==========================================================
+   9b. DECK TABLE PAGE (table.html)
+   ========================================================== */
+
+/* Page heading + hint */
+.page-intro { padding-block: var(--space-4) var(--space-2); }
+.page-intro p { color: var(--muted); font-size: 1.1rem; }
+
+/* The table: a felt surface inside a dark wooden rail, with a thin brass edge.
+   CSS Grid splits it into named areas: dealer, turn, player, and deck. */
+.table {
+  --felt-bright: #0E6B49;
+  display: grid;
+  grid-template-columns: 1fr 14rem;
+  grid-template-areas:
+    "dealer deck"
+    "turn   deck"
+    "player deck";
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-3);
+  border: 14px solid #2A1A12;                    /* wooden rail */
+  border-radius: 32px;
+  background:
+    var(--grain),
+    radial-gradient(ellipse at center, var(--felt-bright) 0%, var(--felt) 75%);
+  box-shadow:
+    inset 0 0 0 3px rgba(201, 162, 75, 0.6),     /* brass line */
+    inset 0 0 70px rgba(0, 0, 0, 0.55),          /* darker toward the edge */
+    0 24px 44px rgba(0, 0, 0, 0.5);              /* shadow under the table */
+}
+.zone-dealer { grid-area: dealer; }
+.zone-player { grid-area: player; }
+.zone-turn   { grid-area: turn; display: grid; place-items: center; }
+.zone-deck   { grid-area: deck; display: grid; place-items: center; align-content: center; gap: var(--space-2); }
+
+.zone { display: flex; flex-direction: column; align-items: center; gap: var(--space-1); }
+.zone h2 { font-size: 1.5rem; margin: 0; }
+.total { margin: 0; color: var(--muted); }
+.cards { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: var(--space-3); margin-top: var(--space-1); }
+.slot { margin: 0; display: flex; flex-direction: column; align-items: center; gap: var(--space-1); }
+.slot figcaption { font-size: 0.9rem; color: var(--muted); }
+
+/* ---- The pulsing "YOUR TURN" badge (keyframe animation) ---- */
+.turn-badge {
+  padding: 0.5rem 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--brass);
+  border-radius: 999px;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.55); }
+  50%      { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(201, 162, 75, 0); }
+}
+
+/* ---- The back of a card (a red diagonal pattern with an ivory border) ---- */
+.card-back {
+  background: repeating-linear-gradient(45deg, #A82B28 0 7px, #8A211F 7px 14px);
+  border: 0.45rem solid var(--ivory);
+  border-radius: 10px;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.55);
+}
+
+/* ---- The card flip (transform + transition) ----
+   Each flip-card holds TWO faces back to back. Rotating the inner box
+   180 degrees around the vertical axis turns the card over. */
+.flip-card {
+  width: 8.5rem;
+  aspect-ratio: 5 / 7;
+  perspective: 900px;              /* gives the spin its 3D depth */
+  cursor: pointer;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;    /* keep both faces in 3D space */
+  transition: transform 0.7s ease;
+}
+.flip-card:hover .flip-inner,
+.flip-card:focus .flip-inner {     /* hover for mouse, focus for keyboard */
+  transform: rotateY(180deg);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;     /* hide a face when it points away from you */
+}
+.flip-front { transform: rotateY(180deg); }   /* starts turned away, so the back shows first */
+
+/* ---- The deck: stacked card backs that fan out (transform + transition) ----
+   Each card gets a number --i (0 to 4) in the HTML. The fan uses that number
+   to decide how far to rotate each card. */
+.deck {
+  position: relative;
+  width: 7rem;
+  aspect-ratio: 5 / 7;
+  cursor: pointer;
+}
+.deck-card {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 120%;      /* pivot below the card, like a hand of cards */
+  transform: translate(calc(var(--i) * 2px), calc(var(--i) * -3px));
+  transition: transform 0.5s ease;
+}
+.deck:hover .deck-card,
+.deck:focus .deck-card {
+  transform: rotate(calc((var(--i) - 2) * 7deg));
+}
+
+/* Small screens: stack everything in one column */
+@media (max-width: 52rem) {
+  .table {
+    grid-template-columns: 1fr;
+    grid-template-areas: "dealer" "turn" "player" "deck";
+    border-width: 10px;
+    padding-inline: var(--space-2);
+  }
+  .zone-deck { padding-bottom: var(--space-2); }
+  .flip-card, .zone .play-card { width: 6.5rem; }
+  .cards { gap: var(--space-2); }
 }
 
 /* 10. ACCESSIBILITY: respect "reduce motion" settings */

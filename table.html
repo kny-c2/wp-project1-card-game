@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deck Table | Blackjack Hub</title>
+  <meta name="description" content="See what a Blackjack table looks like: the dealer zone, player zone, deck, and whose turn it is.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">&spades; Blackjack Hub</a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lobby.html">Lobby</a></li>
+          <li><a href="table.html" aria-current="page">Table</a></li>
+          <li><a href="rules.html">Rules</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro" aria-labelledby="table-title">
+      <div class="container">
+        <h1 id="table-title">The Blackjack Table</h1>
+        <p>This is a snapshot of a hand in progress. Hover over or tab to the dealer's face-down card, the next card from the deck, and the deck itself to see them move.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Blackjack table">
+      <div class="container">
+        <div class="table">
+
+          <!-- DEALER ZONE -->
+          <div class="zone zone-dealer">
+            <h2>Dealer</h2>
+            <div class="cards">
+              <div class="play-card">
+                <span class="rank">K</span><span class="suit">&spades;</span>
+              </div>
+              <figure class="slot">
+                <div class="flip-card" tabindex="0" role="group"
+                     aria-label="Dealer's face-down card. Hover or focus to reveal it: 5 of hearts.">
+                  <div class="flip-inner">
+                    <div class="flip-face card-back" aria-hidden="true"></div>
+                    <div class="flip-face flip-front play-card play-card--red" aria-hidden="true">
+                      <span class="rank">5</span><span class="suit">&hearts;</span>
+                    </div>
+                  </div>
+                </div>
+                <figcaption>Hidden card</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- TURN INDICATOR -->
+          <div class="zone-turn">
+            <p class="turn-badge" role="status">Your turn</p>
+          </div>
+
+          <!-- PLAYER ZONE -->
+          <div class="zone zone-player">
+            <h2>You</h2>
+            <p class="total">Total: 16 &nbsp;|&nbsp; Your options: <strong>Hit</strong> (take a card) or <strong>Stand</strong> (keep your hand)</p>
+            <div class="cards">
+              <div class="play-card play-card--red">
+                <span class="rank">10</span><span class="suit">&diams;</span>
+              </div>
+              <div class="play-card">
+                <span class="rank">6</span><span class="suit">&clubs;</span>
+              </div>
+              <figure class="slot">
+                <div class="flip-card" tabindex="0" role="group"
+                     aria-label="The next card in the deck. Hover or focus to reveal it: 3 of clubs.">
+                  <div class="flip-inner">
+                    <div class="flip-face card-back" aria-hidden="true"></div>
+                    <div class="flip-face flip-front play-card" aria-hidden="true">
+                      <span class="rank">3</span><span class="suit">&clubs;</span>
+                    </div>
+                  </div>
+                </div>
+                <figcaption>Next card (if you hit)</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- DECK -->
+          <div class="zone-deck">
+            <div class="deck" tabindex="0" role="group"
+                 aria-label="The deck of cards. Hover or focus to fan the cards out.">
+              <span class="deck-card card-back" style="--i:0" aria-hidden="true"></span>
+              <span class="deck-card card-back" style="--i:1" aria-hidden="true"></span>
+              <span class="deck-card card-back" style="--i:2" aria-hidden="true"></span>
+              <span class="deck-card card-back" style="--i:3" aria-hidden="true"></span>
+              <span class="deck-card card-back" style="--i:4" aria-hidden="true"></span>
+            </div>
+            <p class="total">The deck</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="read-title">
+      <div class="container">
+        <h2 id="read-title">How to read the table</h2>
+        <div class="grid">
+          <article class="card" data-suit="&spades;">
+            <h3>Dealer zone</h3>
+            <p>The dealer shows one card face-up and keeps one face-down. Right now the dealer is showing a King, worth 10.</p>
+          </article>
+          <article class="card card--red" data-suit="&hearts;">
+            <h3>Player zone</h3>
+            <p>Your cards are both face-up. A 10 and a 6 add up to 16, which is a tricky hand to decide on.</p>
+          </article>
+          <article class="card" data-suit="&clubs;">
+            <h3>The deck</h3>
+            <p>New cards come from the deck when you hit. The next card here would give you 19.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackjack Hub | CSC 4370 Project 1 </p>
+    </div>
+  </footer>
+
+</body>
+</html>
