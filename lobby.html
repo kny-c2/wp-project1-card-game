@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose your table: learn the basics, explore the practice table, or pick up strategy tips.">
+  <title>Game Lobby | Blackjack Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">♠ Blackjack Hub</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lobby.html" aria-current="page">Game Lobby</a></li>
+          <li><a href="table.html">Deck Table</a></li>
+          <li><a href="rules.html">Rules &amp; Strategy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="page-intro container">
+      <h1>Choose Your Table</h1>
+      <p>Every table in this lobby is open and free to join. Take them in order if you're brand new, or jump straight to the one you need.</p>
+    </div>
+
+    <section class="section container" aria-label="Available tables">
+      <div class="grid">
+
+        <article class="card table-sign" data-suit="♠">
+          <span class="table-no">Table 1</span>
+          <h2>Learn the Basics</h2>
+          <p class="table-status"><span class="status-dot" aria-hidden="true"></span> Open &middot; Beginner</p>
+          <p>New to Blackjack? Start here and learn how a round works.</p>
+          <ul class="learn-list">
+            <li>The goal: beat the dealer without passing 21</li>
+            <li>What each card is worth</li>
+            <li>What hit, stand, and bust mean</li>
+          </ul>
+          <a class="btn" href="rules.html#basics">Join Table 1</a>
+        </article>
+
+        <article class="card card--red table-sign" data-suit="♥">
+          <span class="table-no">Table 2</span>
+          <h2>Practice Table</h2>
+          <p class="table-status"><span class="status-dot" aria-hidden="true"></span> Open &middot; Hands-on</p>
+          <p>Take a seat and see a hand in progress from the player's side.</p>
+          <ul class="learn-list">
+            <li>Where the dealer, player, and deck sit</li>
+            <li>Flip the dealer's hidden card</li>
+            <li>Fan out the deck</li>
+          </ul>
+          <a class="btn" href="table.html">Join Table 2</a>
+        </article>
+
+        <article class="card table-sign" data-suit="♣">
+          <span class="table-no">Table 3</span>
+          <h2>Strategy Tips</h2>
+          <p class="table-status"><span class="status-dot" aria-hidden="true"></span> Open &middot; Next level</p>
+          <p>Already know the rules? Learn how to make smarter choices.</p>
+          <ul class="learn-list">
+            <li>When to hit and when to stand</li>
+            <li>How the dealer's card changes your play</li>
+            <li>Why Aces are your friend</li>
+          </ul>
+          <a class="btn" href="rules.html#strategy">Join Table 3</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="container" aria-labelledby="start-title">
+      <div class="rules-block lobby-help">
+        <h2 id="start-title">Not sure where to sit?</h2>
+        <p>If you've never played, start at <strong>Table 1</strong>, then visit <strong>Table 2</strong> to see it all laid out, and finish at <strong>Table 3</strong> for tips.</p>
+        <a class="btn" href="rules.html#basics">Start at Table 1</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackjack Hub &middot; CSC 4370/6370 Group Project 1 &middot; Billy Haboon &amp; Kenny Cao</p>
+    </div>
+  </footer>
+</body>
+</html>

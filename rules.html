@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plain-language Blackjack rules, card values, example hands, and beginner strategy tips.">
+  <title>Rules &amp; Strategy | Blackjack Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">♠ Blackjack Hub</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lobby.html">Game Lobby</a></li>
+          <li><a href="table.html">Deck Table</a></li>
+          <li><a href="rules.html" aria-current="page">Rules &amp; Strategy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="page-intro container">
+      <h1>Rules &amp; Strategy</h1>
+      <p>Everything a complete beginner needs to know, in plain language.</p>
+    </div>
+
+    <div class="container">
+      <ul class="on-this-page" aria-label="On this page">
+        <li><a href="#basics">The Goal</a></li>
+        <li><a href="#values">Card Values</a></li>
+        <li><a href="#actions">Hit, Stand &amp; Bust</a></li>
+        <li><a href="#examples">Example Hands</a></li>
+        <li><a href="#strategy">Strategy Tips</a></li>
+      </ul>
+
+      <section class="rules-block" id="basics" aria-labelledby="basics-title">
+        <h2 id="basics-title">The Goal of the Game</h2>
+        <p>Blackjack is played against the dealer, not against other players. Your goal is simple: <strong>get a hand worth more than the dealer's without going over 21.</strong></p>
+        <p>Each round starts with you and the dealer both getting two cards. You can see both of yours, but only one of the dealer's cards is face up. Then you decide how to play your hand, and the dealer plays last.</p>
+        <p class="note">If your hand goes over 21, you lose right away. If your first two cards total exactly 21 (an Ace plus a 10-value card), that's called a <strong>Blackjack</strong>, the best possible starting hand.</p>
+      </section>
+
+      <section class="rules-block" id="values" aria-labelledby="values-title">
+        <h2 id="values-title">Card Values</h2>
+        <p>You only need to remember three rules. Suits (♠ ♥ ♦ ♣) don't matter in Blackjack.</p>
+        <table class="value-table">
+          <caption>How much each card is worth</caption>
+          <thead>
+            <tr>
+              <th scope="col">Card</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">2 through 10</th>
+              <td>Face value (a 7 is worth 7)</td>
+            </tr>
+            <tr>
+              <th scope="row">Jack, Queen, King</th>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">Ace</th>
+              <td>1 or 11, whichever helps your hand more</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>A hand with an Ace counted as 11 is called a <strong>soft hand</strong> because it can't bust on the next card. If counting the Ace as 11 would push you over 21, it automatically counts as 1.</p>
+      </section>
+
+      <section class="rules-block" id="actions" aria-labelledby="actions-title">
+        <h2 id="actions-title">Hit, Stand &amp; Bust</h2>
+        <p>On your turn, you choose what to do with your hand:</p>
+        <div class="grid">
+          <div class="action-box">
+            <h3>Hit</h3>
+            <p>Take another card. You can hit as many times as you like, as long as you stay at 21 or under.</p>
+          </div>
+          <div class="action-box">
+            <h3>Stand</h3>
+            <p>Keep your hand as it is and end your turn. Now it's the dealer's turn.</p>
+          </div>
+          <div class="action-box action-box--bust">
+            <h3>Bust</h3>
+            <p>Your total goes over 21. You lose the round immediately, even if the dealer would have busted too.</p>
+          </div>
+        </div>
+        <p style="margin-top: var(--space-2);">After you stand, the dealer reveals their hidden card and must keep hitting until their total is 17 or higher. If the dealer busts, you win. Otherwise, the higher total wins, and equal totals are a tie (called a <strong>push</strong>).</p>
+      </section>
+
+      <section class="rules-block" id="examples" aria-labelledby="examples-title">
+        <h2 id="examples-title">Example Hands</h2>
+        <p>Here are three quick examples to see how the rules work in practice.</p>
+        <div class="grid">
+          <div class="example-hand">
+            <h3>Blackjack!</h3>
+            <div class="example-cards">
+              <span class="mini-card" role="img" aria-label="Ace of spades">A♠</span>
+              <span class="mini-card mini-card--red" role="img" aria-label="King of hearts">K♥</span>
+            </div>
+            <p class="hand-total hand-total--win">11 + 10 = 21. Best possible hand!</p>
+          </div>
+
+          <div class="example-hand">
+            <h3>Hit or Stand?</h3>
+            <div class="example-cards">
+              <span class="mini-card" role="img" aria-label="Five of clubs">5♣</span>
+              <span class="mini-card mini-card--red" role="img" aria-label="Six of diamonds">6♦</span>
+            </div>
+            <p class="hand-total">5 + 6 = 11. Safe to hit, since no single card can bust you.</p>
+          </div>
+
+          <div class="example-hand">
+            <h3>Bust</h3>
+            <div class="example-cards">
+              <span class="mini-card" role="img" aria-label="Ten of spades">10♠</span>
+              <span class="mini-card mini-card--red" role="img" aria-label="Six of hearts">6♥</span>
+              <span class="mini-card" role="img" aria-label="Nine of clubs">9♣</span>
+            </div>
+            <p class="hand-total hand-total--lose">10 + 6 + 9 = 25. Over 21, you lose.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rules-block" id="strategy" aria-labelledby="strategy-title">
+        <h2 id="strategy-title">Beginner Strategy Tips</h2>
+        <p>Blackjack has a lot of luck, but these simple habits will help you make smarter choices.</p>
+        <ul class="tips-list">
+          <li><strong>Always hit on 11 or less.</strong> You can't bust, so there's no risk in taking another card.</li>
+          <li><strong>Stand on 17 or more.</strong> The chance of busting is high, so it's usually best to keep what you have.</li>
+          <li><strong>Look at the dealer's face-up card.</strong> If it's a 2 through 6, the dealer is more likely to bust, so you can stand on lower totals (like 12 or 13).</li>
+          <li><strong>If the dealer shows a 7 or higher,</strong> they probably have a strong hand. Be willing to hit on totals up to 16.</li>
+          <li><strong>Don't be afraid of the Ace.</strong> A soft hand gives you a safety net, so you can hit more freely.</li>
+          <li><strong>Play for the long run.</strong> Don't chase losses or play on a hunch. Steady, simple decisions beat guessing.</li>
+        </ul>
+        <p class="note">These tips are a simple starting point for learning. Real casino strategy charts get more detailed, but this is plenty for a first game.</p>
+        <p><a class="btn" href="table.html">See the Table</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackjack Hub &middot; CSC 4370/6370 Group Project 1 &middot; Billy Haboon &amp; Kenny Cao</p>
+    </div>
+  </footer>
+</body>
+</html>
