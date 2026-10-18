@@ -433,3 +433,192 @@ main { flex: 1; }
     transition: none !important;
   }
 }
+
+/* ==========================================================
+   9c. EXTRAS FOR lobby.html AND rules.html
+   (added on top of the shared stylesheet; reuses its colors)
+   ========================================================== */
+
+/* Skip link: appears only when a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--brass);
+  color: var(--ink);
+  font-weight: 700;
+  border-radius: 8px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* "On this page" jump links */
+.on-this-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+}
+.on-this-page a {
+  display: block;
+  padding: 0.4rem 1rem;
+  color: var(--ivory);
+  text-decoration: none;
+  border: 2px solid var(--brass);
+  border-radius: 999px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.on-this-page a:hover,
+.on-this-page a:focus-visible { background: var(--brass); color: var(--ink); }
+
+/* Each rules section sits in a dark panel on the felt */
+.rules-block {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(201, 162, 75, 0.45);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+  scroll-margin-top: 6rem;          /* keeps headings clear of the sticky nav */
+}
+.rules-block h2 { color: var(--brass); }
+
+.note {
+  padding: 0.75rem 1rem;
+  background: rgba(201, 162, 75, 0.15);
+  border-left: 5px solid var(--brass);
+  border-radius: 8px;
+}
+
+/* Card values table */
+.value-table {
+  width: 100%;
+  margin-bottom: var(--space-2);
+  border-collapse: collapse;
+  background: var(--ivory);
+  color: var(--ink);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.value-table caption {
+  text-align: left;
+  padding-bottom: 0.5rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.value-table th,
+.value-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #d9d2bf;
+}
+.value-table thead th { background: var(--felt-mid); color: var(--ivory); }
+.value-table tbody tr:last-child th,
+.value-table tbody tr:last-child td { border-bottom: 0; }
+.value-table tbody tr { transition: background 0.2s ease; }
+.value-table tbody tr:hover { background: #ece4cf; }
+
+/* Hit / Stand / Bust boxes */
+.action-box {
+  background: var(--ivory);
+  color: var(--ink);
+  border-left: 6px solid var(--brass);
+  border-radius: 10px;
+  padding: var(--space-2) var(--space-3);
+}
+.action-box h3 { margin-bottom: 0.25rem; }
+.action-box p { margin: 0; }
+.action-box--bust { border-left-color: var(--suit-red); }
+.action-box--bust h3 { color: var(--suit-red); }
+
+/* Example hands built from small cards */
+.example-hand {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: var(--space-2) var(--space-3);
+}
+.example-cards { display: flex; gap: var(--space-1); margin-bottom: var(--space-1); }
+.mini-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  aspect-ratio: 5 / 7;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease;
+}
+.mini-card:hover { transform: translateY(-6px) rotate(-3deg); }
+.mini-card--red { color: var(--suit-red); }
+.hand-total { margin: 0; font-weight: 700; }
+.hand-total--win { color: var(--brass); }
+.hand-total--lose { color: #FF9A8F; }
+
+.tips-list { padding-left: 1.25rem; max-width: 65ch; }
+.tips-list li { margin-bottom: var(--space-1); }
+
+@media (max-width: 40rem) {
+  .rules-block { padding: var(--space-2); }
+  .value-table th, .value-table td { padding: 0.6rem; }
+}
+
+/* ==========================================================
+   9d. LOBBY: "table signs" (only lobby.html uses these)
+   ========================================================== */
+
+/* Brass plaque at the top of each card, like a numbered table sign */
+.table-no {
+  padding: 0.2rem 0.9rem;
+  background: var(--brass);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+.table-sign h2 { font-size: 1.7rem; margin: var(--space-1) 0 0; }
+
+/* "Open" status light with a soft glowing pulse */
+.table-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2E6B4F;
+}
+.status-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: #2FBF7A;
+  border-radius: 50%;
+  animation: glow 2s ease-in-out infinite;
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(47, 191, 122, 0.6); }
+  50%      { box-shadow: 0 0 0 7px rgba(47, 191, 122, 0); }
+}
+
+/* "What you'll find here" list inside each table card */
+.learn-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+}
+.learn-list li { margin-bottom: 0.25rem; }
+
+/* Help panel at the bottom of the lobby */
+.lobby-help { text-align: center; }
+.lobby-help p { margin-inline: auto; }
+
