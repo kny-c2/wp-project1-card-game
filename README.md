@@ -6,7 +6,7 @@ A beginner's guide to Blackjack, built with **HTML and CSS only**.
 Topic track: **Card Gaming Hub** + Extension pack: **Strategy Table Pack**
 
 
-Live site (CODD): https://codd.cs.gsu.edu/~kcao9/webprog/project1/blackjack/index.html 
+Live site (CODD): https://codd.cs.gsu.edu/~kcao9/webprog/project1/blackjack/index.html
 
 ---
 
@@ -14,7 +14,7 @@ Live site (CODD): https://codd.cs.gsu.edu/~kcao9/webprog/project1/blackjack/inde
 
 | Member | Role | Responsibilities |
 |---|---|---|
-| Kenny Cao | Project Leader | Shared stylesheet (`css/style.css`), Home page, Table page, Kanban board, development journal, presentation deck, submission |
+| Kenny Cao | Project Leader | Shared stylesheet (`css/style.css`), Home page, Table page, Kanban board, presentation deck, submission |
 | Billy Haboon | Team Member | Lobby page, Rules page |
 ---
 
