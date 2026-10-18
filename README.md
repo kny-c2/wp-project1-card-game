@@ -6,7 +6,7 @@ A beginner's guide to Blackjack, built with **HTML and CSS only**.
 Topic track: **Card Gaming Hub** + Extension pack: **Strategy Table Pack**
 
 
-Live site (CODD): 
+Live site (CODD): https://codd.cs.gsu.edu/~kcao9/webprog/project1/blackjack/index.html 
 
 ---
 
